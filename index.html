@@ -38,9 +38,9 @@
     color-scheme: dark;
   }
 
-  * { box-sizing: border-box; }
-  html, body { overflow-x: hidden; }
-  body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'Work Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; min-width: 0; }
+  html { overflow-x: hidden; width: 100%; }
+  body { margin: 0; width: 100%; overflow-x: hidden; overflow-wrap: anywhere; background: var(--cream); color: var(--ink); font-family: 'Work Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   img { max-width: 100%; display: block; }
   [hidden] { display: none !important; }
   h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; text-wrap: balance; margin: 0; }
@@ -182,8 +182,12 @@
   .hours-row .day { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; }
   .hours-row .day.today { color: var(--clay); }
   .hours-row .times { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-  .hours-row .chip { font-family: 'Space Mono', monospace; font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--ink-soft); background: var(--cream-dim); border-radius: 999px; padding: 5px 12px; }
+  .hours-row .chip { font-family: 'Space Mono', monospace; font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--ink-soft); background: var(--cream-dim); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
   .hours-row .chip.closed { color: var(--clay-deep); background: color-mix(in srgb, var(--clay) 14%, var(--cream)); }
+  @media (max-width: 420px) {
+    .hours-row { grid-template-columns: 1fr; gap: 8px; }
+    .hours-row .times { justify-content: flex-start; }
+  }
   .board-note { margin-top: 22px; font-size: 0.82rem; color: var(--ink-soft); max-width: 60ch; }
 
   /* ---------- reviews / testimonial (belvedere-style pull quote block) ---------- */
