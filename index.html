@@ -124,17 +124,34 @@
   .specialty h3 em { color: var(--clay); font-style: italic; }
   .specialty p { margin: 8px 0 0; color: var(--ink-soft); line-height: 1.6; }
 
-  /* ---------- menu scorecard ---------- */
-  .menu-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px 20px 4px 20px; overflow: hidden; }
-  @media (max-width: 600px) { .menu-grid { grid-template-columns: 1fr; } }
-  .menu-cat { background: var(--card); padding: 26px 28px; }
-  .menu-cat .num { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--court-deep); letter-spacing: 0.1em; }
-  .menu-cat h4 { margin-top: 6px; font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-  .menu-cat ul { list-style: none; margin: 16px 0 0; padding: 0; }
-  .menu-cat li { display: flex; justify-content: space-between; gap: 12px; padding-block: 10px; border-top: 1px dashed var(--line); font-size: 1.18rem; color: var(--ink-soft); }
+  /* ---------- menu: la carta ---------- */
+  .menu-card {
+    margin-top: 40px; position: relative; overflow: hidden;
+    background: var(--card); border: 1px solid var(--line); border-radius: 4px 32px 4px 32px;
+    box-shadow: var(--shadow); padding: clamp(30px, 6vw, 56px) clamp(22px, 6vw, 60px);
+  }
+  .menu-card::before {
+    content: ""; position: absolute; inset: 10px; border: 1px solid color-mix(in srgb, var(--clay) 30%, transparent);
+    border-radius: 2px 26px 2px 26px; pointer-events: none;
+  }
+  .menu-head { text-align: center; position: relative; }
+  .menu-head .eyebrow-sm { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); }
+  .menu-head h3 { margin-top: 8px; font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: clamp(1.8rem, 3vw, 2.3rem); }
+  .menu-flourish { width: 84px; height: 14px; margin: 14px auto 0; color: var(--court); opacity: 0.7; }
+
+  .menu-columns { margin-top: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(30px, 5vw, 64px); row-gap: 34px; }
+  @media (max-width: 640px) { .menu-columns { grid-template-columns: 1fr; row-gap: 30px; } }
+
+  .menu-cat .cat-head { display: flex; align-items: baseline; gap: 10px; }
+  .menu-cat .num { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--court-deep); letter-spacing: 0.1em; }
+  .menu-cat h4 { font-family: 'Fraunces', serif; font-size: 1.08rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clay-deep); }
+  .menu-cat ul { list-style: none; margin: 14px 0 0; padding: 0; }
+  .menu-cat li { padding-block: 9px; border-top: 1px solid var(--line); }
   .menu-cat li:first-child { border-top: none; }
-  .menu-cat li .dish { font-family: 'Cormorant Garamond', 'Fraunces', Georgia, serif; font-style: italic; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
-  .price-note { margin-top: 22px; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); }
+  .menu-cat li .dish { display: block; font-family: 'Cormorant Garamond', 'Fraunces', Georgia, serif; font-style: italic; font-weight: 600; font-size: 1.28rem; color: var(--ink); letter-spacing: 0.01em; }
+  .menu-cat li .note { display: block; margin-top: 2px; font-size: 0.82rem; color: var(--ink-soft); font-family: 'Work Sans', sans-serif; }
+
+  .price-note { margin-top: clamp(26px, 4vw, 38px); text-align: center; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--ink-soft); }
 
   /* ---------- gallery mosaic ---------- */
   .mosaic { margin-top: 38px; display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 110px; gap: 10px; }
@@ -296,21 +313,49 @@
   <section id="karte" class="reveal">
     <span class="kicker">Speisekarte</span>
     <h2 class="section-title">Pizza, Pasta &amp; mehr</h2>
-    <div class="menu-grid">
-      <div class="menu-cat"><div class="num">01</div><h4>Antipasti</h4>
-        <ul><li><span class="dish">Tomaten &amp; Mozzarella</span></li><li><span class="dish">Vorspeisenteller der Casa</span></li></ul>
+    <div class="menu-card">
+      <div class="menu-head">
+        <span class="eyebrow-sm">Ristorante La Perla</span>
+        <h3>La Carta</h3>
+        <svg class="menu-flourish" viewBox="0 0 84 14" fill="none" aria-hidden="true">
+          <path d="M0 7H32" stroke="currentColor" stroke-width="1"/>
+          <circle cx="42" cy="7" r="4" stroke="currentColor" stroke-width="1"/>
+          <path d="M52 7H84" stroke="currentColor" stroke-width="1"/>
+        </svg>
       </div>
-      <div class="menu-cat"><div class="num">02</div><h4>Pizza al forno</h4>
-        <ul><li><span class="dish">Pizza Terry</span></li><li><span class="dish">Margherita</span></li><li><span class="dish">Weitere Klassiker der Casa</span></li></ul>
+      <div class="menu-columns">
+        <div class="menu-cat">
+          <div class="cat-head"><span class="num">01</span><h4>Antipasti</h4></div>
+          <ul>
+            <li><span class="dish">Tomaten &amp; Mozzarella</span><span class="note">Büffelmozzarella, Ofentomaten, Basilikum</span></li>
+            <li><span class="dish">Vorspeisenteller della Casa</span><span class="note">Kleine Auswahl aus der Küche</span></li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <div class="cat-head"><span class="num">02</span><h4>Pizza al forno</h4></div>
+          <ul>
+            <li><span class="dish">Pizza Terry</span><span class="note">Spinat, Speck, Knoblauch — Hausspezialität</span></li>
+            <li><span class="dish">Margherita</span><span class="note">Tomate, Mozzarella, Basilikum</span></li>
+            <li><span class="dish">Weitere Klassiker della Casa</span><span class="note">Auf der Tageskarte</span></li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <div class="cat-head"><span class="num">03</span><h4>Pasta</h4></div>
+          <ul>
+            <li><span class="dish">Lasagne al forno</span><span class="note">Hausgemacht, klassisch geschichtet</span></li>
+            <li><span class="dish">Pasta del giorno</span><span class="note">Wechselnd, je nach Saison</span></li>
+          </ul>
+        </div>
+        <div class="menu-cat">
+          <div class="cat-head"><span class="num">04</span><h4>Pesce &amp; Carne</h4></div>
+          <ul>
+            <li><span class="dish">Fisch vom Tag</span><span class="note">Je nach saisonalem Angebot</span></li>
+            <li><span class="dish">Vom Grill</span><span class="note">Fleischgerichte der Casa</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="menu-cat"><div class="num">03</div><h4>Pasta</h4>
-        <ul><li><span class="dish">Lasagne al forno</span></li><li><span class="dish">Hausgemachte Pasta, wechselnd</span></li></ul>
-      </div>
-      <div class="menu-cat"><div class="num">04</div><h4>Pesce &amp; Carne</h4>
-        <ul><li><span class="dish">Fischgerichte je nach Saison</span></li><li><span class="dish">Fleischgerichte vom Grill</span></li></ul>
-      </div>
+      <p class="price-note">Hauptgerichte ca. 10–20 € · Tageskarte am Tisch, Änderungen vorbehalten</p>
     </div>
-    <p class="price-note">Hauptgerichte ca. 10–20 € · Tageskarte am Tisch, Änderungen vorbehalten</p>
   </section>
 
   <section id="galerie" class="reveal">
