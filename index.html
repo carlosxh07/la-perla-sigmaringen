@@ -86,7 +86,8 @@
   .hero .photo { position: absolute; inset: 0; }
   .hero .photo::after { background: linear-gradient(180deg, rgba(32,25,17,0.05) 0%, rgba(32,25,17,0.15) 45%, rgba(32,25,17,0.86) 100%); }
   .hero-inner { position: relative; z-index: 2; padding-block: clamp(28px, 6vw, 64px); width: 100%; color: var(--cream); }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); background: rgba(248,241,224,0.14); border: 1px solid rgba(248,241,224,0.35); padding: 6px 12px; border-radius: 999px; backdrop-filter: blur(4px); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--clay); }
   .hero h1 { margin-top: 20px; font-size: clamp(2.9rem, 7vw, 5.4rem); line-height: 0.96; font-weight: 500; max-width: 16ch; }
   .hero h1 em { font-style: italic; color: var(--clay); }
   .hero p.lede { margin-top: 22px; max-width: 48ch; font-size: 1.08rem; line-height: 1.55; color: rgba(248,241,224,0.88); }
@@ -116,10 +117,10 @@
   .story-photo { border-radius: 4px 28px 4px 28px; aspect-ratio: 3/3.6; box-shadow: var(--shadow); }
 
   /* ---------- specialty ---------- */
-  .specialty { background: var(--card); border: 1px solid var(--line); border-radius: 4px 20px 4px 20px; padding: clamp(18px, 4vw, 26px); box-shadow: var(--shadow); display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; margin-top: 32px; }
+  .specialty { border-top: 1px solid var(--line); padding-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; margin-top: 32px; }
   @media (max-width: 560px) { .specialty { grid-template-columns: 1fr; } }
-  .specialty .badge { width: 96px; height: 96px; border-radius: 50%; flex: none; padding: 4px; background: conic-gradient(from 210deg, var(--clay), var(--gold), var(--clay)); }
-  .specialty .badge .photo { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--card); }
+  .specialty .badge { width: 92px; height: 92px; border-radius: 50%; flex: none; padding: 3px; background: conic-gradient(from 210deg, var(--clay), var(--gold), var(--clay)); }
+  .specialty .badge .photo { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--cream); }
   .specialty h3 { font-size: 1.5rem; font-weight: 600; }
   .specialty h3 em { color: var(--clay); font-style: italic; }
   .specialty p { margin: 8px 0 0; color: var(--ink-soft); line-height: 1.6; }
@@ -198,9 +199,9 @@
   .hours-row:last-child { border-bottom: none; }
   .hours-row .day { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem; }
   .hours-row .day.today { color: var(--clay); }
-  .hours-row .times { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-  .hours-row .chip { font-family: 'Space Mono', monospace; font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--ink-soft); background: var(--cream-dim); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
-  .hours-row .chip.closed { color: var(--clay-deep); background: color-mix(in srgb, var(--clay) 14%, var(--cream)); }
+  .hours-row .times { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+  .hours-row .chip { font-family: 'Space Mono', monospace; font-size: 0.86rem; font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; }
+  .hours-row .chip.closed { color: var(--clay-deep); font-style: italic; }
   @media (max-width: 420px) {
     .hours-row { grid-template-columns: 1fr; gap: 8px; }
     .hours-row .times { justify-content: flex-start; }
@@ -230,11 +231,12 @@
 
   .map-card { border-radius: 4px 20px 4px 20px; border: 1px solid var(--line); aspect-ratio: 4/3; position: relative; overflow: hidden; box-shadow: var(--shadow); background: var(--cream-dim); }
   .map-card iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.15) sepia(0.08) saturate(1.05); }
-  .map-card .map-tag { position: absolute; left: 14px; bottom: 14px; z-index: 2; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink); box-shadow: var(--shadow); pointer-events: none; }
+  .map-card .map-tag { position: absolute; left: 14px; bottom: 14px; z-index: 2; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink); text-shadow: 0 0 6px var(--cream), 0 0 3px var(--cream); pointer-events: none; }
 
-  .social-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
-  .social-row a { text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); transition: border-color .2s, color .2s; }
+  .social-row { display: flex; gap: 8px; margin-top: 24px; flex-wrap: wrap; align-items: center; font-size: 0.86rem; }
+  .social-row a { text-decoration: none; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: border-color .2s, color .2s; }
   .social-row a:hover { border-color: var(--clay); color: var(--clay); }
+  .social-row .sep { color: var(--ink-soft); }
 
   footer { border-top: 1px solid var(--line); padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); margin-top: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.78rem; color: var(--ink-soft); }
 
@@ -316,7 +318,7 @@
     <div class="menu-card">
       <div class="menu-head">
         <span class="eyebrow-sm">Ristorante La Perla</span>
-        <h3>La Carta</h3>
+        <h3>Unsere Karte</h3>
         <svg class="menu-flourish" viewBox="0 0 84 14" fill="none" aria-hidden="true">
           <path d="M0 7H32" stroke="currentColor" stroke-width="1"/>
           <circle cx="42" cy="7" r="4" stroke="currentColor" stroke-width="1"/>
@@ -325,10 +327,10 @@
       </div>
       <div class="menu-columns">
         <div class="menu-cat">
-          <div class="cat-head"><span class="num">01</span><h4>Antipasti</h4></div>
+          <div class="cat-head"><span class="num">01</span><h4>Vorspeisen</h4></div>
           <ul>
             <li><span class="dish">Tomaten &amp; Mozzarella</span><span class="note">Büffelmozzarella, Ofentomaten, Basilikum</span></li>
-            <li><span class="dish">Vorspeisenteller della Casa</span><span class="note">Kleine Auswahl aus der Küche</span></li>
+            <li><span class="dish">Vorspeisenteller des Hauses</span><span class="note">Kleine Auswahl aus der Küche</span></li>
           </ul>
         </div>
         <div class="menu-cat">
@@ -336,18 +338,18 @@
           <ul>
             <li><span class="dish">Pizza Terry</span><span class="note">Spinat, Speck, Knoblauch — Hausspezialität</span></li>
             <li><span class="dish">Margherita</span><span class="note">Tomate, Mozzarella, Basilikum</span></li>
-            <li><span class="dish">Weitere Klassiker della Casa</span><span class="note">Auf der Tageskarte</span></li>
+            <li><span class="dish">Weitere Klassiker des Hauses</span><span class="note">Auf der Tageskarte</span></li>
           </ul>
         </div>
         <div class="menu-cat">
           <div class="cat-head"><span class="num">03</span><h4>Pasta</h4></div>
           <ul>
             <li><span class="dish">Lasagne al forno</span><span class="note">Hausgemacht, klassisch geschichtet</span></li>
-            <li><span class="dish">Pasta del giorno</span><span class="note">Wechselnd, je nach Saison</span></li>
+            <li><span class="dish">Pasta des Tages</span><span class="note">Wechselnd, je nach Saison</span></li>
           </ul>
         </div>
         <div class="menu-cat">
-          <div class="cat-head"><span class="num">04</span><h4>Pesce &amp; Carne</h4></div>
+          <div class="cat-head"><span class="num">04</span><h4>Fisch &amp; Fleisch</h4></div>
           <ul>
             <li><span class="dish">Fisch vom Tag</span><span class="note">Je nach saisonalem Angebot</span></li>
             <li><span class="dish">Vom Grill</span><span class="note">Fleischgerichte der Casa</span></li>
@@ -402,7 +404,7 @@
     <div class="quote-block" style="position:relative;">
       <svg class="leaf-accent" style="right:-10px; top:-30px; width:120px; height:120px;" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M10 90C10 60 30 20 90 10C80 55 55 80 10 90Z" stroke="currentColor" stroke-width="1.2"/><path d="M18 82C34 62 50 42 82 18" stroke="currentColor" stroke-width="1"/></svg>
       <span class="mark">“</span>
-      <blockquote>Excellent pizza and pasta dishes! Finally, a real Italian restaurant in Germany that does both exceptionally well.<cite>— Gästebewertung, Tripadvisor</cite></blockquote>
+      <blockquote>Ausgezeichnete Pizza und Pasta! Endlich ein wirklich italienisches Restaurant in Deutschland, das beides hervorragend beherrscht.<cite>— Gästebewertung, Tripadvisor (übersetzt)</cite></blockquote>
     </div>
   </section>
 
@@ -418,9 +420,9 @@
           <li><span class="k">Lage</span><span class="v">Terrasse mit Blick auf die Plätze des Tennisclub Sigmaringen. Auch ohne Club­mitgliedschaft geöffnet — für Vereinsfeiern, Hochzeiten und Firmenfeiern buchbar.</span></li>
         </ul>
         <div class="social-row">
-          <a href="https://www.instagram.com/ristorante.laperla/" target="_blank" rel="noopener">Instagram ↗</a>
-          <a href="https://www.facebook.com/RistoranteLaPerlaSigmaringen/" target="_blank" rel="noopener">Facebook ↗</a>
-          <a href="https://tc-sigmaringen.de/gastronomie/" target="_blank" rel="noopener">TC Sigmaringen ↗</a>
+          <a href="https://www.instagram.com/ristorante.laperla/" target="_blank" rel="noopener">Instagram</a><span class="sep">·</span>
+          <a href="https://www.facebook.com/RistoranteLaPerlaSigmaringen/" target="_blank" rel="noopener">Facebook</a><span class="sep">·</span>
+          <a href="https://tc-sigmaringen.de/gastronomie/" target="_blank" rel="noopener">Tennisclub Sigmaringen</a>
         </div>
       </div>
       <div class="map-card">
